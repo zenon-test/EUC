@@ -4,6 +4,7 @@ WITH RedressPayments AS (
         l.customer_id,
         p.payment_date,
         p.payment_amount,
+        p.redress_category
         rr.redress_rate,
         (p.payment_amount * rr.redress_rate / 100) AS redress_amount
     FROM
