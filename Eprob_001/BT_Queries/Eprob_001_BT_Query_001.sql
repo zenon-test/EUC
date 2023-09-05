@@ -8,7 +8,7 @@ WITH RedressPayments AS (
         rr.redress_rate,
         (p.payment_amount * rr.redress_rate / 100) AS redress_amount
     FROM
-        loans l
+        loans2 l
     JOIN payments p ON l.loan_id = p.loan_id
     JOIN redress_rates rr ON p.payment_date BETWEEN rr.start_date AND rr.end_date
 )
