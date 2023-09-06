@@ -1,0 +1,76 @@
+digraph {
+	subgraph "cluster_N0.0" {
+		label="Step 1: N0.0"
+		node [shape=box]
+		"N0.0.0" [label=select fillcolor=white style=filled]
+		"N0.0.1" [label="*" fillcolor=white style=filled]
+		"N0.0.2" [label=from fillcolor=white style=filled]
+		"N0.0.3" [label="N0.0.7" fillcolor="#FFAAAA" style=filled]
+		"N0.0.0" -> "N0.0.1" [constraint=true]
+		"N0.0.1" -> "N0.0.2" [constraint=true]
+		"N0.0.2" -> "N0.0.3" [constraint=true]
+	}
+	subgraph "cluster_N0.0.7" {
+		label="Step 2: N0.0.7"
+		node [shape=box]
+		"N0.0.7.0" [label=select fillcolor=white style=filled]
+		"N0.0.7.1" [label="N0.0.7.4" fillcolor="#FFAAAA" style=filled]
+		"N0.0.7.2" [label=from fillcolor=white style=filled]
+		"N0.0.7.3" [label="N0.0.7.10" fillcolor=white style=filled]
+		"N0.0.7.4" [label="where gam.acid=t.acid and gam.acid=lam.acid" fillcolor=white style=filled]
+		"N0.0.7.0" -> "N0.0.7.1" [constraint=true]
+		"N0.0.7.1" -> "N0.0.7.2" [constraint=true]
+		"N0.0.7.2" -> "N0.0.7.3" [constraint=true]
+		"N0.0.7.3" -> "N0.0.7.4" [constraint=true]
+	}
+	subgraph "cluster_N0.0.7.10" {
+		label="Step 3: N0.0.7.10"
+		node [shape=box]
+		"N0.0.7.10.0" [label="tbaadm.gam" fillcolor=white style=filled]
+		"N0.0.7.10.1" [label="tbaadm.lam" fillcolor=white style=filled]
+		"N0.0.7.10.2" [label="N0.0.7.10.7" fillcolor=white style=filled]
+		"N0.0.7.10.0" -> "N0.0.7.10.1" [constraint=true]
+		"N0.0.7.10.1" -> "N0.0.7.10.2" [constraint=true]
+	}
+	subgraph "cluster_N0.0.7.10.7" {
+		label="Step 4: N0.0.7.10.7"
+		node [shape=box]
+		"N0.0.7.10.7.0" [label="(
+select 'SM5494538' acid,
+to_date('16-Nov-2018',
+'DD-MON-YYYY') start_date,
+to_date('11-May-2019',
+
+...
+'31-Jul-2020',
+'DD-MON-YYYY') start_date,
+to_date('29-Sep-2020',
+'DD-MON-YYYY') end_date from dual
+)" fillcolor=white style=filled]
+		"N0.0.7.10.7.1" [label=t fillcolor=white style=filled]
+		"N0.0.7.10.7.0" -> "N0.0.7.10.7.1" [constraint=true]
+	}
+	subgraph "cluster_N0.0.7.4" {
+		label="Step 5: N0.0.7.4"
+		node [shape=box]
+		"N0.0.7.4.0" [label="N0.0.7.4.0" fillcolor="#FFAAAA" style=filled]
+		"N0.0.7.4.1" [label="..." fillcolor=white style=filled]
+		"N0.0.7.4.0" -> "N0.0.7.4.1" [constraint=true]
+	}
+	subgraph "cluster_N0.0.7.4.0" {
+		label="Step 6: N0.0.7.4.0"
+		node [shape=box]
+		"N0.0.7.4.0.0" [label="gam.acid||to_char(start_date,
+'MMDDYYYY')||to_char(end_date,
+'MMDDYYYY')" fillcolor=white style=filled]
+		"N0.0.7.4.0.1" [label=as fillcolor=white style=filled]
+		"N0.0.7.4.0.2" [label="N0.0.7.4.0.4" fillcolor="#FFAAAA" style=filled]
+		"N0.0.7.4.0.0" -> "N0.0.7.4.0.1" [constraint=true]
+		"N0.0.7.4.0.1" -> "N0.0.7.4.0.2" [constraint=true]
+	}
+	subgraph "cluster_N0.0.7.4.0.4" {
+		label="Step 7: N0.0.7.4.0.4"
+		node [shape=box]
+		"N0.0.7.4.0.4.0" [label="\"UNIQUE_KEY\"" fillcolor="#FFAAAA" style=filled]
+	}
+}
